@@ -6,12 +6,13 @@ import { CanActivate, Router } from '@angular/router';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
+
   base_url: string;
-  constructor(private authService: AuthService,private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   canActivate() {
     // Verifica se existe Tokenif
-    (this.authService.isAuthenticated()) {
+    if (this.authService.isAuthenticated()) {
       // Caso exista token retorna true
       return true;
     } else {
