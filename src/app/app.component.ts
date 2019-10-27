@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(public dialog: MatDialog) {}
+
   title = 'traning-bank';
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AppComponent, {
+      height: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }
